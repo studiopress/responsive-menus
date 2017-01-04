@@ -9,7 +9,9 @@ function prefix_responsive_menu_settings() {
 	
 	$settings = array(
 		'mainMenu'         => __( 'Menu', 'magazine' ),
+		'menuIconClass'    => 'dashicons-before dashicons-menu',
 		'subMenu'          => __( 'Menu', 'magazine' ),
+		'subMenuIconClass' => 'dashicons-before dashicons-arrow-down-alt2',
 		'menuClasses'      => array(
 			'combine' => array(
 				'.nav-primary',
@@ -21,8 +23,6 @@ function prefix_responsive_menu_settings() {
 				'.nav-sidebar',
 			),
 		),
-		'menuIconClass'    => 'dashicons-before dashicons-menu',
-		'subMenuIconClass' => 'dashicons-before dashicons-arrow-down-alt2',
 	);
 
 	return $settings;
@@ -39,12 +39,18 @@ wp_localize_script( 'responsive-menu-handle', 'genesis_responsive_menu', $output
 
 ## Options
 ###`mainMenu`
-Accepts a string of text to use for the Main Menu toggle button. Pass an empty string for no text.
+**Required**. Accepts a string of text to use for the Main Menu toggle button. Pass an empty string for no text.
 
-*Required*
+###`menuIconClass`
+Accepts a string of classes. These will be passed to an empty `<span>` tag within the Main Menu toggle button. To bypass an icon being added, pass an empty string to the value.
+
+*Removing defaults to the dashicons menu icon.*
 
 ###`subMenu`
 **Required**. Accepts a string of text to use for the Sub Menu toggle button (wrapped in `<span class="screen-reader-text"></span>`). Pass an empty string for no text (not recommended).
+
+###`subMenuIconClass`
+**Required**. Accepts a string of classes. These will be passed to an empty `<span>` tag within the Sub Menu toggle button to be used for dropdowns.
 
 ###`menuClasses`
 **Required**. Accepts two separate arrays for menus to combine and menus to handle as their own.
@@ -56,14 +62,6 @@ If there is only one menu showing on the page that's within the `combine` array,
 
 ####`others`
 Accepts an array of menu class names to target. Each menu will recieve it's own Main Menu toggle and act separately from all others on the page.
-
-###`menuIconClass`
-Accepts a string of classes. These will be passed to an empty `<span>` tag within the Main Menu toggle button. To bypass an icon being added, pass an empty string to the value.
-
-*Removing defaults to the dashicons menu icon.*
-
-###`subMenuIconClass`
-**Required**. Accepts a string of classes. These will be passed to an empty `<span>` tag within the Sub Menu toggle button to be used for dropdowns.
 
 #### Credits
 Based off Robin's accessible menu script, and modified heavily for reusability in StudioPress themes, and maintained by Calvin Koepke, Lauren Mancke, and Jen Baumann.
