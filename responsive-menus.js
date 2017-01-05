@@ -3,49 +3,87 @@
  *
  * @author StudioPress
  * @link https://github.com/copyblogger/responsive-menus
+ * @version 1.1.0
  * @license GPL-2.0+
  */
 
 var genesisMenuParams      = typeof genesis_responsive_menu === 'undefined' ? '' : genesis_responsive_menu,
-	genesisMenus           = genesisMenuParams.menuClasses,
+	genesisMenusUnchecked  = genesisMenuParams.menuClasses,
+	genesisMenus           = {},
 	menusToCombine         = [];
-
-// Validate our original with what's on the page and update in the menusToCombine variable.
-jQuery( genesisMenus.combine ).each( function( index ) {
-
-	var $this = jQuery( this.valueOf() );
-	
-	if ( $this.length > 0 ) {
-		menusToCombine.push( this.valueOf() );
-	} else {
-		genesisMenus.combine.splice( index, 1 );
-	}
-
-});
-
-// Make sure there is something to use for the 'others' array.
-if ( typeof genesisMenus.others == 'undefined' ) {
-	genesisMenus.others = [];
-}
-
-// If there's only one menu on the page for combining, push it to the 'others' array and nullify our combine variable.
-if ( menusToCombine.length == 1 ) {
-	genesisMenus.others.push( menusToCombine[0] );
-	genesisMenus.combine = null;
-	menusToCombine = null;
-}
 
 ( function ( document, $, undefined ) {
 
 	'use strict';
 
-	$( 'body' ).addClass( 'js' );
+	// Make our menus unique if there's more than one instance on the page.
+	/**
+	 * Validate the menus passed by the theme with what's being loaded on the page,
+	 * and pass the new and accurate information to our new data.
+	 * @param {genesisMenusUnchecked} Raw data from the localized script in the theme.
+	 * @return {array} genesisMenus array gets populated with updated data.
+	 * @return {array} menusToCombine array gets populated with relevant data.
+	 */
+	$.each( genesisMenusUnchecked, function( group ) {
+
+		// Mirror our group object to populate.
+		genesisMenus[group] = [];
+
+		// Loop through each instance of the specified menu on the page.
+		$.each( this, function( key, value ) {
+
+			var menuString = value,
+				$menu      = $(value);
+
+			// If there is more than one instance, append the index and update array.
+			if ( $menu.length > 1 ) {
+
+				$.each( $menu, function( key, value ) {
+
+					var newString = menuString + '-' + key;
+
+					$(this).addClass( newString.replace('.','') );
+
+					genesisMenus[group].push( newString );
+
+					if ( 'combine' === group ) {
+						menusToCombine.push( newString );
+					}
+
+				});
+
+			} else if ( $menu.length == 1 ) {
+
+				genesisMenus[group].push( menuString );
+
+				if ( 'combine' === group ) {
+					menusToCombine.push( menuString );
+				}
+
+			}
+
+		});
+
+	});
+
+	// Make sure there is something to use for the 'others' array.
+	if ( typeof genesisMenus.others == 'undefined' ) {
+		genesisMenus.others = [];
+	}
+
+	// If there's only one menu on the page for combining, push it to the 'others' array and nullify our 'combine' variable.
+	if ( menusToCombine.length == 1 ) {
+		genesisMenus.others.push( menusToCombine[0] );
+		genesisMenus.combine = null;
+		menusToCombine = null;
+	}
 
 	var genesisMenu         = {},
 		mainMenuButtonClass = 'menu-toggle',
 		subMenuButtonClass  = 'sub-menu-toggle',
 		responsiveMenuClass = 'genesis-responsive-menu';
 
+	// Initialize.
 	genesisMenu.init = function() {
 
 		// Exit early if there are no menus to do anything.
@@ -75,11 +113,11 @@ if ( menusToCombine.length == 1 ) {
 					} ) )
 			};
 
-		// Add the main nav button to the primary menu, or exit the plugin.
-		_addMenuButtons( toggleButtons );
-		
 		// Add the responsive menu class to the active menus.
 		_addResponsiveMenuClass();
+
+		// Add the main nav button to the primary menu, or exit the plugin.
+		_addMenuButtons( toggleButtons );
 		
 		// Setup additional classes.
 		$( '.' + mainMenuButtonClass ).addClass( menuIconClass );
