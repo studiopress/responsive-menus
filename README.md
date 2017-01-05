@@ -104,6 +104,11 @@ Use the following styles as a starting point for when you **want** the menu to w
 		position: relative;
 	}
 
+	.genesis-skip-link .skip-link-hidden {
+		display: none;
+		visibility: hidden;
+	}
+
 	.menu-toggle,
 	.sub-menu-toggle {
 		border-width: 0;

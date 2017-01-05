@@ -3,7 +3,7 @@
  *
  * @author StudioPress
  * @link https://github.com/copyblogger/responsive-menus
- * @version 1.1.0
+ * @version 1.1.1
  * @license GPL-2.0+
  */
 
@@ -295,6 +295,10 @@ var genesisMenuParams      = typeof genesis_responsive_menu === 'undefined' ? ''
 			}
 
 			var $item = $( '.genesis-skip-link a[href="#' + startLink + '"]' );
+
+			if ( value !== menusToCombine[0] ) {
+				$item.toggleClass( 'skip-link-hidden' );
+			}
 
 			if ( $item.length > 0 ) {
 				var link  = $item.attr( 'href' );
