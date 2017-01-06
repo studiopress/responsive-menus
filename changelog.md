@@ -6,3 +6,4 @@
 
 = 1.1.1 =
 * Fix skip link bug for combined menus.
+* Updated default sub menu toggle icon.
