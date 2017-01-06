@@ -394,13 +394,17 @@ var genesisMenuParams      = typeof genesis_responsive_menu === 'undefined' ? ''
 			menuList.push( value.valueOf() );
 		});
 
-		return menuList;
+		if ( menuList.length > 1 ) {
+			return menuList;
+		} else {
+			return null;
+		}
 
 	}
 
 	$(document).ready(function () {
 
-		if ( typeof genesisMenuParams !== 'undefined' ) {
+		if ( _getAllMenusArray() !== null ) {
 
 			genesisMenu.init();
 		

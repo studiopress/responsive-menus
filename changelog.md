@@ -7,3 +7,4 @@
 = 1.1.1 =
 * Fix skip link bug for combined menus.
 * Updated default sub menu toggle icon.
+* Update _getAllMenusArray() check to return null if no menus are on the page.
