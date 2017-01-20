@@ -8,3 +8,6 @@
 * Fix skip link bug for combined menus.
 * Updated default sub menu toggle icon.
 * Update _getAllMenusArray() check to return null if no menus are on the page.
+
+= 1.1.2 =
+* Squashing more bugs, and a faulty logic declaration.

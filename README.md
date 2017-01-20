@@ -6,7 +6,7 @@ Settings can be added by localizing an array of appropriate values to the repson
 
 ```php
 function prefix_responsive_menu_settings() {
-	
+
 	$settings = array(
 		'mainMenu'         => __( 'Menu', 'magazine' ),
 		'menuIconClass'    => 'dashicons-before dashicons-menu',
@@ -30,11 +30,14 @@ function prefix_responsive_menu_settings() {
 }
 ```
 
-Next, localize your settings to the responsive menus script:
+Next, localize your settings to the responsive menus script (this way for readability):
 
 ```php
-$output = prefix_responsive_menu_settings();
-wp_localize_script( 'responsive-menu-handle', 'genesis_responsive_menu', $output );
+wp_localize_script(
+	'responsive-menu-handle',
+	'genesis_responsive_menu',
+	prefix_responsive_menu_settings()
+);
 ```
 
 ## Options
@@ -225,4 +228,4 @@ Use the following styles as a starting point for when you **want** the menu to w
 ```
 
 #### Credits
-Based off Robin's accessible menu script, and modified heavily for reusability in StudioPress themes, and maintained by Calvin Koepke, Lauren Mancke, and Jen Baumann.
+Based off Robin's accessible menu script, but modified heavily for reusability in StudioPress themes. Maintained by Calvin Koepke.
