@@ -326,7 +326,7 @@ var genesisMenuParams      = typeof genesis_responsive_menu === 'undefined' ? ''
 			.attr( 'aria-expanded', false )
 			.attr( 'aria-pressed', false );
 
-		$( '.' + responsiveMenuClass + ', ' + responsiveMenuClass + ' .sub-menu' )
+		$( '.' + responsiveMenuClass + ', .' + responsiveMenuClass + ' .sub-menu' )
 			.attr( 'style', '' );
 	}
 

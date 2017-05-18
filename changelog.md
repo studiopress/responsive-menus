@@ -11,3 +11,7 @@
 
 = 1.1.2 =
 * Squashing more bugs, and a faulty logic declaration.
+
+= 1.1.3 =
+* Fix responsive menu class bug when resizing to full screen.
+* Add task manager, yarn lock file, and Google Closure Compiler for managing compression.
