@@ -96,15 +96,13 @@
 				menu : $( '<button />', {
 					'class' : mainMenuButtonClass,
 					'aria-expanded' : false,
-					'aria-pressed' : false,
-					'role' : 'button'
+					'aria-pressed' : false
 					} )
 					.append( genesisMenuParams.mainMenu ),
 				submenu : $( '<button />', {
 					'class' : subMenuButtonClass,
 					'aria-expanded' : false,
-					'aria-pressed' : false,
-					'role' : 'button'
+					'aria-pressed' : false
 					} )
 					.append( $( '<span />', {
 						'class' : 'screen-reader-text',
