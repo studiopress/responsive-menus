@@ -3,7 +3,7 @@
  *
  * @author StudioPress
  * @link https://github.com/copyblogger/responsive-menus
- * @version 1.1.2
+ * @version 1.1.3
  * @license GPL-2.0+
  */
 
