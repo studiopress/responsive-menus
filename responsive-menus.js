@@ -7,14 +7,14 @@
  * @license GPL-2.0+
  */
 
-var genesisMenuParams      = typeof genesis_responsive_menu === 'undefined' ? '' : genesis_responsive_menu,
-	genesisMenusUnchecked  = genesisMenuParams.menuClasses,
-	genesisMenus           = {},
-	menusToCombine         = [];
-
 ( function ( document, $, undefined ) {
 
 	'use strict';
+
+	var genesisMenuParams      = typeof genesis_responsive_menu === 'undefined' ? '' : genesis_responsive_menu,
+		genesisMenusUnchecked  = genesisMenuParams.menuClasses,
+		genesisMenus           = {},
+		menusToCombine         = [];
 
 	/**
 	 * Validate the menus passed by the theme with what's being loaded on the page,
