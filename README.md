@@ -2,7 +2,7 @@
 This script adds accessibility-compatible responsive menus to Genesis Framework child themes. It is intended as a drop-in plugin that accepts a localized object of settings for the script to use.
 
 ## Settings
-Settings can be added by localizing an array of appropriate values to the repsonsive-menus.js script (or responsive-menus.min.js if you are serving production).
+Settings can be added by localizing an array of appropriate values to the responsive-menus.js script (or responsive-menus.min.js if you are serving production).
 
 ```php
 function prefix_responsive_menu_settings() {
